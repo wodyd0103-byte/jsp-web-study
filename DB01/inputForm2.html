@@ -1,0 +1,98 @@
+<!--
+정정/삭제(inputForm2.html) 흐름
+1. 조회할 학번을 넣고 [조회] -> showREC.jsp 호출
+2. showREC.jsp가 레코드 유무를 확인하여 inputForm2.html로 데이터를 돌려준다(k14_ 파라미터)
+   - 있으면: 이름/학번/국어/영어/수학을 아래 표에 채운다
+   - 없으면: 이름칸에 "해당학번없음" 표시
+3. 표에서 값을 고치고 [정정] -> updateDB.jsp (수정)
+4. [삭제] -> deleteDB.jsp (해당 학번 삭제 후 전체조회)
+   * 조회/정정/삭제가 모두 이 페이지에서 이뤄진다
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>InputForm2</title>
+<script>
+    // 프레임셋 밖에 단독으로 떠 있으면 index.html(프레임셋)로 복귀한다.
+    if (window.top === window.self) { window.location.replace("index.html"); }
+</script>
+<style>
+    body { font-family: sans-serif; }
+    .qline { margin: 15px 0; }
+    table.rec { border-collapse: collapse; margin-top: 10px; }
+    table.rec td { border: 1px solid #888; padding: 6px 10px; }
+    table.rec td.label { background-color: #eee; text-align: center; width: 90px; }
+    table.rec input { width: 200px; }
+    .btns { margin-top: 12px; }
+</style>
+</head>
+<body>
+<h1>성적 조회후 정정 / 삭제</h1>
+
+<!-- 1) 학번 조회 폼 -->
+<form action="showREC.jsp" method="post">
+    <span class="qline">조회할 학번
+        <input type="text" name="k14_studentid">
+        <input type="submit" value="조회">
+    </span>
+</form>
+
+<!-- 2) 조회 결과 표시 + 정정/삭제 폼 -->
+<form method="post">
+    <table class="rec">
+        <tr>
+            <td class="label">이름</td>
+            <td><input type="text" name="k14_name" id="r_name"></td>
+        </tr>
+        <tr>
+            <td class="label">학번</td>
+            <td><input type="text" name="k14_studentid" id="r_studentid" readonly></td>
+        </tr>
+        <tr>
+            <td class="label">국어</td>
+            <td><input type="text" name="k14_kor" id="r_kor"></td>
+        </tr>
+        <tr>
+            <td class="label">영어</td>
+            <td><input type="text" name="k14_eng" id="r_eng"></td>
+        </tr>
+        <tr>
+            <td class="label">수학</td>
+            <td><input type="text" name="k14_mat" id="r_mat"></td>
+        </tr>
+    </table>
+
+    <div class="btns">
+        <button type="submit" formaction="updateDB.jsp">정정</button>
+        <button type="submit" formaction="deleteDB.jsp">삭제</button>
+    </div>
+</form>
+
+<script>
+    // showREC.jsp가 넘겨준 URL 파라미터를 읽어서 표에 채운다
+    var params = new URLSearchParams(window.location.search);
+
+    if (params.has("k14_name")) {
+        var name = params.get("k14_name");
+
+        if (name === "해당학번없음") {
+            // 학번이 없는 경우: 이름칸에만 표시
+            document.getElementById("r_name").value = "해당학번없음";
+            document.getElementById("r_studentid").value = "";
+            document.getElementById("r_kor").value = "";
+            document.getElementById("r_eng").value = "";
+            document.getElementById("r_mat").value = "";
+        } else {
+            // 학번이 있는 경우: 표 전체 채우기
+            document.getElementById("r_name").value = name;
+            document.getElementById("r_studentid").value = params.get("k14_studentid") || "";
+            document.getElementById("r_kor").value = params.get("k14_kor") || "";
+            document.getElementById("r_eng").value = params.get("k14_eng") || "";
+            document.getElementById("r_mat").value = params.get("k14_mat") || "";
+        }
+    }
+</script>
+
+</body>
+</html>

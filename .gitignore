@@ -1,0 +1,25 @@
+# Compiled / build output
+*.class
+*.jar
+WEB-INF/classes/
+WEB-INF/lib/
+work/
+target/
+
+# Tomcat 기본 파일 (third-party)
+RELEASE-NOTES.txt
+asf-logo-wide.svg
+tomcat.css
+tomcat.svg
+bg-*.png
+
+# 도구/에디터 상태
+.bkit/
+.omc/
+.claude/
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,61 @@
+<!--
+추가(inputForm1.html) 흐름
+1. 이름/국어/영어/수학을 입력하고 [추가] -> insertDB.jsp 호출
+   학번은 insertDB.jsp에서 자동부여(기존 최대 학번 + 1)된다
+2. insertDB.jsp가 추가된 레코드를 표로 보여주고 [뒤로가기]로 이 화면으로 돌아온다
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>InputForm1</title>
+<script>
+    // 프레임셋 밖에 단독으로 떠 있으면 index.html(프레임셋)로 복귀한다.
+    if (window.top === window.self) { window.location.replace("index.html"); }
+</script>
+<style>
+    body { font-family: sans-serif; }
+    .wrap { width: 430px; }
+    .btns { text-align: right; margin-bottom: 8px; }
+    table.rec { border-collapse: collapse; width: 100%; }
+    table.rec td { border: 1px solid #888; padding: 6px 10px; }
+    table.rec td.label { background-color: #eee; text-align: center; width: 90px; }
+    table.rec input { width: 230px; }
+    td.auto { text-align: center; color: #555; }
+</style>
+</head>
+<body>
+<h1>성적입력추가</h1>
+
+<form action="insertDB.jsp" method="post">
+    <div class="wrap">
+        <div class="btns">
+            <input type="submit" value="추가">
+        </div>
+        <table class="rec">
+            <tr>
+                <td class="label">이름</td>
+                <td><input type="text" name="k14_name"></td>
+            </tr>
+            <tr>
+                <td class="label">학번</td>
+                <td class="auto">자동부여</td>
+            </tr>
+            <tr>
+                <td class="label">국어</td>
+                <td><input type="text" name="k14_kor"></td>
+            </tr>
+            <tr>
+                <td class="label">영어</td>
+                <td><input type="text" name="k14_eng"></td>
+            </tr>
+            <tr>
+                <td class="label">수학</td>
+                <td><input type="text" name="k14_mat"></td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+</body>
+</html>

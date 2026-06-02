@@ -1,0 +1,38 @@
+<!--메뉴가 보이는 파일-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Menu</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="sidebar">
+
+    <div class="brand">
+        <p class="kicker">JSP &middot; MySQL</p>
+        <h1 class="logo">DBAI</h1>
+        <p class="tagline">examtable 데이터베이스<br>생성 · 삭제 · 조회 실습</p>
+    </div>
+
+    <ul class="nav">
+        <li><a class="nav-item" href="createDB.jsp"  target="main"><span class="num">01</span> TBL 생성</a></li>
+        <li><a class="nav-item" href="dropDB.jsp"    target="main"><span class="num">02</span> TBL 삭제</a></li>
+        <li><a class="nav-item" href="AllsetDB.jsp"  target="main"><span class="num">03</span> TBL 값넣기</a></li>
+        <li><a class="nav-item" href="AllviewDB.jsp" target="main"><span class="num">04</span> TBL 전체조회</a></li>
+    </ul>
+
+    <div class="sidebar-foot">© DBAI PRACTICE</div>
+
+    <script>
+        // 클릭한 메뉴에 활성 표시 (메뉴 프레임은 유지되므로 그대로 남음)
+        document.querySelectorAll('.nav-item').forEach(function (a) {
+            a.addEventListener('click', function () {
+                document.querySelectorAll('.nav-item').forEach(function (x) {
+                    x.classList.remove('is-active');
+                });
+                this.classList.add('is-active');
+            });
+        });
+    </script>
+</body>
+</html>

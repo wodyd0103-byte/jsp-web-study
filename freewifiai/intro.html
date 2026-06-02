@@ -1,0 +1,73 @@
+<!-- 첫 진입 시 보이는 인트로 (레이더 히어로) -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Intro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="content bg-mesh">
+    <div class="wrap">
+        <p class="eyebrow">Public Free WiFi · Geo Finder</p>
+        <h1 class="page-title">가장 가까운 <span class="mark">무료 WiFi</span>를<br>찾아드립니다</h1>
+        <p class="lead">
+            <strong>freewifiai</strong>는 JSP와 MySQL <code>freewifi</code> 테이블의 공공 WiFi 좌표를
+            읽어, 내 위치 기준으로 <strong>거리를 계산하고 가까운 순으로 정렬</strong>해 보여주는
+            예제입니다. 왼쪽 메뉴에서 단계별로 진행해 보세요.
+        </p>
+
+        <div class="radar-hero">
+            <div>
+                <h2>실시간 신호 탐지 데모</h2>
+                <p>
+                    각 WiFi 지점의 위도·경도와 내 좌표의 차이로 거리를 산출하고,
+                    신호 막대(시그널 바)로 근접도를 시각화합니다.
+                    가까울수록 막대가 가득 차고 라임색으로 빛납니다.
+                </p>
+                <span class="myloc">◎ MY POSITION&nbsp; 37.3860521, 127.1214038</span>
+            </div>
+            <div class="radar" aria-hidden="true">
+                <div class="ring"></div>
+                <div class="ring r2"></div>
+                <div class="ring r3"></div>
+                <div class="ring r4"></div>
+                <div class="cross-h"></div>
+                <div class="cross-v"></div>
+                <div class="sweep"></div>
+                <div class="ping p1"></div>
+                <div class="ping p2"></div>
+                <div class="ping p3"></div>
+                <div class="core"></div>
+            </div>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature" style="animation-delay:.2s">
+                <div class="ic">📡</div>
+                <h3>전체 정보</h3>
+                <p>freewifi 테이블의 16개 컬럼을 한눈에 확인합니다.</p>
+            </div>
+            <div class="feature" style="animation-delay:.28s">
+                <div class="ic">📐</div>
+                <h3>거리 계산</h3>
+                <p>위·경도 차이로 거리를 구해 미터 단위로 환산합니다.</p>
+            </div>
+            <div class="feature" style="animation-delay:.36s">
+                <div class="ic">🛰️</div>
+                <h3>가까운 순 정렬</h3>
+                <p>AI 보강: 결과를 거리 오름차순으로 자동 정렬합니다.</p>
+            </div>
+            <div class="feature" style="animation-delay:.44s">
+                <div class="ic">📶</div>
+                <h3>시그널 바</h3>
+                <p>근접도를 신호 강도 막대로 직관적으로 표현합니다.</p>
+            </div>
+        </div>
+
+        <p class="hint">
+            <span class="arrow">←</span>
+            <span><strong>02 거리 계산 · 정렬</strong>을 누르면 가까운 WiFi부터 신호 막대와 함께 보입니다.</span>
+        </p>
+    </div>
+</body>
+</html>

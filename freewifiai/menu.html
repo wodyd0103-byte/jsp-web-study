@@ -1,0 +1,54 @@
+<!-- 좌측 사이드바 메뉴 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Menu</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="sidebar bg-mesh">
+
+    <div class="brand">
+        <p class="kicker">JSP &middot; MySQL &middot; LIVE</p>
+        <h1 class="logo">freewifi<span style="opacity:.7">ai</span></h1>
+        <p class="tagline">공공 무료 WiFi 위치를<br>내 좌표 기준 거리순으로 탐색</p>
+
+        <div class="signal-chip">
+            <span class="bars"><i></i><i></i><i></i><i></i></span>
+            <span>SIGNAL&nbsp;&nbsp;ONLINE</span>
+        </div>
+    </div>
+
+    <ul class="nav">
+        <li><a class="nav-item" href="FW.jsp"  target="main">
+            <span class="num">01</span>
+            <span class="label">전체 정보 조회<small>ALL COLUMNS</small></span>
+        </a></li>
+        <li><a class="nav-item" href="FW1.jsp" target="main">
+            <span class="num">02</span>
+            <span class="label">거리 계산 · 정렬<small>NEAREST FIRST</small></span>
+        </a></li>
+        <li><a class="nav-item" href="FW2.jsp" target="main">
+            <span class="num">03</span>
+            <span class="label">페이징 조회<small>LIMIT 10</small></span>
+        </a></li>
+        <li><a class="nav-item" href="FW3.jsp" target="main">
+            <span class="num">04</span>
+            <span class="label">가까운 순 + 페이지<small>RANK + PAGER</small></span>
+        </a></li>
+    </ul>
+
+    <div class="sidebar-foot">© FREEWIFIAI · RADAR EDITION</div>
+
+    <script>
+        document.querySelectorAll('.nav-item').forEach(function (a) {
+            a.addEventListener('click', function () {
+                document.querySelectorAll('.nav-item').forEach(function (x) {
+                    x.classList.remove('is-active');
+                });
+                this.classList.add('is-active');
+            });
+        });
+    </script>
+</body>
+</html>

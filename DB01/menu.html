@@ -1,0 +1,35 @@
+<!--메뉴가 보이는 파일-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Menu</title>
+<script>
+    // 1) menu.html이 프레임셋 밖(최상위)에 단독으로 떠 있으면 index.html로 되돌린다.
+    if (window.top === window.self) { window.location.replace("index.html"); }
+
+    // 2) 메뉴 클릭을 "이 프레임셋의 main 프레임"으로 직접 보낸다.
+    //    전역 이름 target="main"이 떠돌이 새 탭/창으로 새는 것을 원천 차단한다.
+    window.addEventListener("DOMContentLoaded", function () {
+        var links = document.querySelectorAll('a[target="main"]');
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener("click", function (e) {
+                e.preventDefault();
+                parent.frames["main"].location.href = this.href;
+            });
+        }
+    });
+</script>
+</head>
+<body>
+<ul>
+<li><a href="createDB.jsp" target="main"> * TBL생성</a></li>
+<li><a href="dropDB.jsp" target="main"> * TBL삭제</a></li>
+<li><a href="AllsetDB.jsp" target="main"> * TBL값넣기</a></li>
+<li><a href="AllviewDB.jsp" target="main"> * TBL전체조회</a></li>
+<br>
+<li><a href="inputForm1.html" target="main"> * 추가</a></li>
+<li><a href="inputForm2.html" target="main"> * 정정/삭제</a></li>
+</ul>
+</body>
+</html>
